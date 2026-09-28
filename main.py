@@ -205,23 +205,57 @@ def tasks():
     number = int(input("How many tasks do you want to add? "))
 
     for i in range(number):
-        task = input(f"Enter task {i + 1}: ")
-        task_list.append(task)
+        print("\nTask", i + 1)
 
-    print("\nYour Tasks:")
-    print("----------------------------")
+        task = input("Enter task: ")
+        priority = input("Enter priority (High/Medium/Low): ")
 
-    for i in range(len(task_list)):
-        print(i + 1, ".", task_list[i])
+        task_data = {
+            "task": task,
+            "priority": priority,
+            "status": "Pending"
+        }
 
-    print("----------------------------")
+        task_list.append(task_data)
 
-    completed = int(input("Enter the task number you completed: "))
+    while True:
+        print("\n--- YOUR TASKS ---")
 
-    if completed >= 1 and completed <= len(task_list):
-        print("Task completed:", task_list[completed - 1])
-    else:
-        print("Invalid task number.")
+        for i in range(len(task_list)):
+            print(
+                i + 1, ".",
+                task_list[i]["task"],
+                "| Priority:",
+                task_list[i]["priority"],
+                "| Status:",
+                task_list[i]["status"]
+            )
+
+        print("\n1. Mark task as completed")
+        print("2. Back")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+
+            task_number = int(
+                input("Enter task number: ")
+            )
+
+            if 1 <= task_number <= len(task_list):
+
+                task_list[task_number - 1]["status"] = "Completed"
+
+                print("\nTask marked as completed!")
+
+            else:
+                print("\nInvalid task number.")
+
+        elif choice == "2":
+            break
+
+        else:
+            print("\nInvalid choice.")
 
 
 # Main program
