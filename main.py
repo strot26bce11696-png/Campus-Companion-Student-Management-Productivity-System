@@ -1,41 +1,109 @@
-import tkinter as tk
-from tkinter import messagebox
+# ==========================================
+#        CAMPUS COMPANION
+#   Student Management System
+# ==========================================
 
-# Create main window
-root = tk.Tk()
+def show_menu():
+    print("\n================================")
+    print("       CAMPUS COMPANION")
+    print("================================")
+    print("1. Student Profile")
+    print("2. Attendance")
+    print("3. Marks")
+    print("4. Timetable")
+    print("5. Tasks")
+    print("6. Exit")
+    print("================================")
 
-root.title("Campus Companion")
-root.geometry("800x500")
 
-# Heading
-title = tk.Label(
-    root,
-    text="Campus Companion",
-    font=("Arial", 28, "bold")
-)
-title.pack(pady=30)
+def student_profile():
+    print("\n--- STUDENT PROFILE ---")
 
-subtitle = tk.Label(
-    root,
-    text="Your Personal College Management System",
-    font=("Arial", 14)
-)
-subtitle.pack()
+    name = input("Enter your name: ")
+    roll_no = input("Enter your roll number: ")
+    branch = input("Enter your branch: ")
 
-# Test button
-def welcome():
-    messagebox.showinfo(
-        "Campus Companion",
-        "Welcome to Campus Companion!"
-    )
+    print("\nStudent Details")
+    print("Name     :", name)
+    print("Roll No  :", roll_no)
+    print("Branch   :", branch)
 
-button = tk.Button(
-    root,
-    text="Get Started",
-    command=welcome,
-    font=("Arial", 14)
-)
-button.pack(pady=40)
 
-# Start application
-root.mainloop()
+def attendance():
+    print("\n--- ATTENDANCE ---")
+
+    subject = input("Enter subject name: ")
+    total = int(input("Enter total classes: "))
+    attended = int(input("Enter classes attended: "))
+
+    percentage = (attended / total) * 100
+
+    print("\nSubject:", subject)
+    print("Attendance:", round(percentage, 2), "%")
+
+    if percentage >= 75:
+        print("Status: Attendance is sufficient")
+    else:
+        print("Status: Attendance is low")
+
+
+def marks():
+    print("\n--- MARKS ---")
+
+    subject = input("Enter subject name: ")
+    marks_obtained = float(input("Enter marks obtained: "))
+    total_marks = float(input("Enter total marks: "))
+
+    percentage = (marks_obtained / total_marks) * 100
+
+    print("\nSubject:", subject)
+    print("Percentage:", round(percentage, 2), "%")
+
+
+def timetable():
+    print("\n--- TIMETABLE ---")
+
+    print("Monday    - Python")
+    print("Tuesday   - Mathematics")
+    print("Wednesday - Physics")
+    print("Thursday  - Chemistry")
+    print("Friday    - Programming")
+
+
+def tasks():
+    print("\n--- TASK MANAGER ---")
+
+    task = input("Enter your task: ")
+
+    print("\nTask added successfully!")
+    print("Task:", task)
+
+
+# Main program
+while True:
+
+    show_menu()
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        student_profile()
+
+    elif choice == "2":
+        attendance()
+
+    elif choice == "3":
+        marks()
+
+    elif choice == "4":
+        timetable()
+
+    elif choice == "5":
+        tasks()
+
+    elif choice == "6":
+        print("\nThank you for using Campus Companion!")
+        break
+
+    else:
+        print("\nInvalid choice. Please try again.")
