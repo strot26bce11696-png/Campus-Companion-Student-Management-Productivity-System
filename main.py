@@ -357,9 +357,9 @@ while True:
     elif choice == "6":
     view_saved_data()
 
-elif choice == "7":
-    print("\nThank you for using Campus Companion!")
-    break
+    elif choice == "7":
+          print("\nThank you for using Campus Companion!")
+          break
 
     
 
