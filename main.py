@@ -32,20 +32,42 @@ def student_profile():
 def attendance():
     print("\n--- ATTENDANCE ---")
 
-    subject = input("Enter subject name: ")
-    total = int(input("Enter total classes: "))
-    attended = int(input("Enter classes attended: "))
+    subjects = int(input("How many subjects do you have? "))
 
-    percentage = (attended / total) * 100
+    total_classes = 0
+    total_attended = 0
 
-    print("\nSubject:", subject)
-    print("Attendance:", round(percentage, 2), "%")
+    for i in range(subjects):
+        print("\nSubject", i + 1)
 
-    if percentage >= 75:
-        print("Status: Attendance is sufficient")
+        subject = input("Enter subject name: ")
+        total = int(input("Enter total classes: "))
+        attended = int(input("Enter classes attended: "))
+
+        percentage = (attended / total) * 100
+
+        print("Subject:", subject)
+        print("Attendance:", round(percentage, 2), "%")
+
+        if percentage >= 75:
+            print("Status: Attendance is sufficient")
+        else:
+            print("Status: LOW ATTENDANCE")
+
+        total_classes += total
+        total_attended += attended
+
+    overall = (total_attended / total_classes) * 100
+
+    print("\n----------------------------")
+    print("Overall Attendance:",
+          round(overall, 2), "%")
+    print("----------------------------")
+
+    if overall >= 75:
+        print("Overall Status: Good")
     else:
-        print("Status: Attendance is low")
-
+        print("Overall Status: Attendance is low")
 
 def marks():
     print("\n--- MARKS ---")
