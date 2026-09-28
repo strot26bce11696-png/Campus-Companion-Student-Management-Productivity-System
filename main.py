@@ -60,8 +60,7 @@ def student_profile():
         else:
             print("\nInvalid choice. Please try again.")
 
-
-        def attendance():
+def attendance():
     print("\n--- ATTENDANCE ---")
 
     subjects = int(input("How many subjects do you have? "))
@@ -118,8 +117,7 @@ def student_profile():
 
     print("\nAttendance saved successfully!")
 
-
-  def marks():
+def marks():
     print("\n--- MARKS ---")
 
     subjects = int(input("How many subjects do you have? "))
