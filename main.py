@@ -353,7 +353,7 @@ while True:
         tasks()
 
     elif choice == "6":
-    view_saved_data()
+         view_saved_data()
 
     elif choice == "7":
           print("\nThank you for using Campus Companion!")
