@@ -1,1 +1,13 @@
-
+def show_menu():
+    print("\n================================")
+    print("       CAMPUS COMPANION")
+    print("================================")
+    print("1. Student Profile")
+    print("2. Attendance")
+    print("3. Marks")
+    print("4. Timetable")
+    print("5. Tasks")
+    print("6. View Saved Data")
+    print("7. Dashboard")
+    print("8. Exit")
+    print("================================")
