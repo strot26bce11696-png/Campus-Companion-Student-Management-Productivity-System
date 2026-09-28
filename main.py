@@ -3,6 +3,7 @@
 #   Student Management System
 # ==========================================
 
+
 def show_menu():
     print("\n================================")
     print("       CAMPUS COMPANION")
@@ -13,12 +14,12 @@ def show_menu():
     print("4. Timetable")
     print("5. Tasks")
     print("6. View Saved Data")
-    print("7. Exit")
+    print("7. Dashboard")
+    print("8. Exit")
     print("================================")
 
 
 def student_profile():
-
     while True:
         print("\n--- STUDENT PROFILE ---")
         print("1. Create / Update Profile")
@@ -60,6 +61,7 @@ def student_profile():
         else:
             print("\nInvalid choice. Please try again.")
 
+
 def attendance():
     print("\n--- ATTENDANCE ---")
 
@@ -94,7 +96,11 @@ def attendance():
             file.write("\nSubject: " + subject + "\n")
             file.write("Total Classes: " + str(total) + "\n")
             file.write("Classes Attended: " + str(attended) + "\n")
-            file.write("Attendance: " + str(round(percentage, 2)) + "%\n")
+            file.write(
+                "Attendance: "
+                + str(round(percentage, 2))
+                + "%\n"
+            )
             file.write("Status: " + status + "\n")
 
             total_classes += total
@@ -102,8 +108,11 @@ def attendance():
 
         overall = (total_attended / total_classes) * 100
 
-        file.write("\nOverall Attendance: "
-                   + str(round(overall, 2)) + "%\n")
+        file.write(
+            "\nOverall Attendance: "
+            + str(round(overall, 2))
+            + "%\n"
+        )
 
     print("\n----------------------------")
     print("Overall Attendance:",
@@ -116,6 +125,7 @@ def attendance():
         print("Overall Status: Attendance is low")
 
     print("\nAttendance saved successfully!")
+
 
 def marks():
     print("\n--- MARKS ---")
@@ -156,10 +166,18 @@ def marks():
             print("Grade:", grade)
 
             file.write("\nSubject: " + subject + "\n")
-            file.write("Marks: " + str(obtained)
-                       + "/" + str(maximum) + "\n")
-            file.write("Percentage: "
-                       + str(round(percentage, 2)) + "%\n")
+            file.write(
+                "Marks: "
+                + str(obtained)
+                + "/"
+                + str(maximum)
+                + "\n"
+            )
+            file.write(
+                "Percentage: "
+                + str(round(percentage, 2))
+                + "%\n"
+            )
             file.write("Grade: " + grade + "\n")
 
             total_obtained += obtained
@@ -167,25 +185,52 @@ def marks():
 
         overall = (total_obtained / total_marks) * 100
 
-        file.write("\nOverall Percentage: "
-                   + str(round(overall, 2)) + "%\n")
+        file.write(
+            "\nOverall Percentage: "
+            + str(round(overall, 2))
+            + "%\n"
+        )
 
     print("\n----------------------------")
-    print("Overall Percentage:",
-          round(overall, 2), "%")
+    print(
+        "Overall Percentage:",
+        round(overall, 2),
+        "%"
+    )
     print("----------------------------")
 
     print("\nMarks saved successfully!")
+
 
 def timetable():
     print("\n--- WEEKLY TIMETABLE ---")
 
     timetable_data = {
-        "Monday": ["Python", "Mathematics", "Physics"],
-        "Tuesday": ["Chemistry", "Python Lab", "Mathematics"],
-        "Wednesday": ["Physics", "Python", "English"],
-        "Thursday": ["Mathematics", "Chemistry", "Python Lab"],
-        "Friday": ["Python", "Physics", "Mathematics"]
+        "Monday": [
+            "Python",
+            "Mathematics",
+            "Physics"
+        ],
+        "Tuesday": [
+            "Chemistry",
+            "Python Lab",
+            "Mathematics"
+        ],
+        "Wednesday": [
+            "Physics",
+            "Python",
+            "English"
+        ],
+        "Thursday": [
+            "Mathematics",
+            "Chemistry",
+            "Python Lab"
+        ],
+        "Friday": [
+            "Python",
+            "Physics",
+            "Mathematics"
+        ]
     }
 
     for day, subjects in timetable_data.items():
@@ -201,13 +246,17 @@ def tasks():
 
     task_list = []
 
-    number = int(input("How many tasks do you want to add? "))
+    number = int(
+        input("How many tasks do you want to add? ")
+    )
 
     for i in range(number):
         print("\nTask", i + 1)
 
         task = input("Enter task: ")
-        priority = input("Enter priority (High/Medium/Low): ")
+        priority = input(
+            "Enter priority (High/Medium/Low): "
+        )
 
         task_data = {
             "task": task,
@@ -217,20 +266,20 @@ def tasks():
 
         task_list.append(task_data)
 
-    # Save tasks to file
     with open("tasks.txt", "w") as file:
         file.write("CAMPUS COMPANION - TASKS\n")
         file.write("----------------------------------\n")
 
         for i in range(len(task_list)):
             file.write(
-                str(i + 1) + ". " +
-                task_list[i]["task"] +
-                " | Priority: " +
-                task_list[i]["priority"] +
-                " | Status: " +
-                task_list[i]["status"] +
-                "\n"
+                str(i + 1)
+                + ". "
+                + task_list[i]["task"]
+                + " | Priority: "
+                + task_list[i]["priority"]
+                + " | Status: "
+                + task_list[i]["status"]
+                + "\n"
             )
 
     while True:
@@ -238,7 +287,8 @@ def tasks():
 
         for i in range(len(task_list)):
             print(
-                i + 1, ".",
+                i + 1,
+                ".",
                 task_list[i]["task"],
                 "| Priority:",
                 task_list[i]["priority"],
@@ -259,24 +309,30 @@ def tasks():
 
             if 1 <= task_number <= len(task_list):
 
-                task_list[task_number - 1]["status"] = "Completed"
+                task_list[
+                    task_number - 1
+                ]["status"] = "Completed"
 
                 print("\nTask marked as completed!")
 
-                # Update saved file
                 with open("tasks.txt", "w") as file:
-                    file.write("CAMPUS COMPANION - TASKS\n")
-                    file.write("----------------------------------\n")
+                    file.write(
+                        "CAMPUS COMPANION - TASKS\n"
+                    )
+                    file.write(
+                        "----------------------------------\n"
+                    )
 
                     for i in range(len(task_list)):
                         file.write(
-                            str(i + 1) + ". " +
-                            task_list[i]["task"] +
-                            " | Priority: " +
-                            task_list[i]["priority"] +
-                            " | Status: " +
-                            task_list[i]["status"] +
-                            "\n"
+                            str(i + 1)
+                            + ". "
+                            + task_list[i]["task"]
+                            + " | Priority: "
+                            + task_list[i]["priority"]
+                            + " | Status: "
+                            + task_list[i]["status"]
+                            + "\n"
                         )
 
             else:
@@ -287,11 +343,14 @@ def tasks():
 
         else:
             print("\nInvalid choice.")
+
+
 def dashboard():
     print("\n================================")
     print("       STUDENT DASHBOARD")
     print("================================")
 
+    # Student Profile
     try:
         with open("student_profile.txt", "r") as file:
             profile = file.read()
@@ -302,6 +361,7 @@ def dashboard():
     except FileNotFoundError:
         print("\nProfile: Not available")
 
+    # Attendance
     try:
         with open("attendance.txt", "r") as file:
             attendance_data = file.read()
@@ -315,6 +375,7 @@ def dashboard():
     except FileNotFoundError:
         print("Attendance: Not available")
 
+    # Marks
     try:
         with open("marks.txt", "r") as file:
             marks_data = file.read()
@@ -328,6 +389,7 @@ def dashboard():
     except FileNotFoundError:
         print("Marks: Not available")
 
+    # Tasks
     try:
         with open("tasks.txt", "r") as file:
             tasks_data = file.readlines()
@@ -349,6 +411,8 @@ def dashboard():
         print("Tasks: Not available")
 
     print("\n================================")
+
+
 def view_saved_data():
     print("\n--- SAVED DATA ---")
 
@@ -391,7 +455,11 @@ def view_saved_data():
         print("\nNo saved data found.")
         print("Please use that module first.")
 
-# Main program
+
+# ==========================================
+#           MAIN PROGRAM
+# ==========================================
+
 while True:
 
     show_menu()
@@ -414,74 +482,14 @@ while True:
         tasks()
 
     elif choice == "6":
-         def dashboard():
-    print("\n================================")
-    print("       STUDENT DASHBOARD")
-    print("================================")
-
-    try:
-        with open("student_profile.txt", "r") as file:
-            profile = file.read()
-
-        print("\n--- PROFILE ---")
-        print(profile)
-
-    except FileNotFoundError:
-        print("\nProfile: Not available")
-
-    try:
-        with open("attendance.txt", "r") as file:
-            attendance_data = file.read()
-
-        print("\n--- ATTENDANCE ---")
-
-        for line in attendance_data.splitlines():
-            if line.startswith("Overall Attendance:"):
-                print(line)
-
-    except FileNotFoundError:
-        print("Attendance: Not available")
-
-    try:
-        with open("marks.txt", "r") as file:
-            marks_data = file.read()
-
-        print("\n--- MARKS ---")
-
-        for line in marks_data.splitlines():
-            if line.startswith("Overall Percentage:"):
-                print(line)
-
-    except FileNotFoundError:
-        print("Marks: Not available")
-
-    try:
-        with open("tasks.txt", "r") as file:
-            tasks_data = file.readlines()
-
-        pending = 0
-        completed = 0
-
-        for line in tasks_data:
-            if "Status: Pending" in line:
-                pending += 1
-            elif "Status: Completed" in line:
-                completed += 1
-
-        print("\n--- TASK SUMMARY ---")
-        print("Pending Tasks:", pending)
-        print("Completed Tasks:", completed)
-
-    except FileNotFoundError:
-        print("Tasks: Not available")
-
-    print("\n================================")
+        view_saved_data()
 
     elif choice == "7":
-          print("\nThank you for using Campus Companion!")
-          break
+        dashboard()
 
-    
+    elif choice == "8":
+        print("\nThank you for using Campus Companion!")
+        break
 
     else:
         print("\nInvalid choice. Please try again.")
