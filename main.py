@@ -127,10 +127,28 @@ def timetable():
 def tasks():
     print("\n--- TASK MANAGER ---")
 
-    task = input("Enter your task: ")
+    task_list = []
 
-    print("\nTask added successfully!")
-    print("Task:", task)
+    number = int(input("How many tasks do you want to add? "))
+
+    for i in range(number):
+        task = input(f"Enter task {i + 1}: ")
+        task_list.append(task)
+
+    print("\nYour Tasks:")
+    print("----------------------------")
+
+    for i in range(len(task_list)):
+        print(i + 1, ".", task_list[i])
+
+    print("----------------------------")
+
+    completed = int(input("Enter the task number you completed: "))
+
+    if completed >= 1 and completed <= len(task_list):
+        print("Task completed:", task_list[completed - 1])
+    else:
+        print("Invalid task number.")
 
 
 # Main program
