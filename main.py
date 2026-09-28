@@ -72,15 +72,47 @@ def attendance():
 def marks():
     print("\n--- MARKS ---")
 
-    subject = input("Enter subject name: ")
-    marks_obtained = float(input("Enter marks obtained: "))
-    total_marks = float(input("Enter total marks: "))
+    subjects = int(input("How many subjects do you have? "))
 
-    percentage = (marks_obtained / total_marks) * 100
+    total_obtained = 0
+    total_marks = 0
 
-    print("\nSubject:", subject)
-    print("Percentage:", round(percentage, 2), "%")
+    for i in range(subjects):
+        print("\nSubject", i + 1)
 
+        subject = input("Enter subject name: ")
+        obtained = float(input("Enter marks obtained: "))
+        maximum = float(input("Enter total marks: "))
+
+        percentage = (obtained / maximum) * 100
+
+        print("Subject:", subject)
+        print("Percentage:", round(percentage, 2), "%")
+
+        if percentage >= 90:
+            grade = "A+"
+        elif percentage >= 80:
+            grade = "A"
+        elif percentage >= 70:
+            grade = "B"
+        elif percentage >= 60:
+            grade = "C"
+        elif percentage >= 50:
+            grade = "D"
+        else:
+            grade = "F"
+
+        print("Grade:", grade)
+
+        total_obtained += obtained
+        total_marks += maximum
+
+    overall = (total_obtained / total_marks) * 100
+
+    print("\n----------------------------")
+    print("Overall Percentage:",
+          round(overall, 2), "%")
+    print("----------------------------")
 
 def timetable():
     print("\n--- TIMETABLE ---")
