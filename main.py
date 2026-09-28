@@ -23,10 +23,19 @@ def student_profile():
     roll_no = input("Enter your roll number: ")
     branch = input("Enter your branch: ")
 
+    with open("student_profile.txt", "w") as file:
+        file.write("CAMPUS COMPANION - STUDENT PROFILE\n")
+        file.write("----------------------------------\n")
+        file.write("Name: " + name + "\n")
+        file.write("Roll No: " + roll_no + "\n")
+        file.write("Branch: " + branch + "\n")
+
+    print("\nProfile saved successfully!")
+
     print("\nStudent Details")
-    print("Name     :", name)
-    print("Roll No  :", roll_no)
-    print("Branch   :", branch)
+    print("Name    :", name)
+    print("Roll No :", roll_no)
+    print("Branch  :", branch)
 
 
 def attendance():
