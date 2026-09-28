@@ -218,6 +218,22 @@ def tasks():
 
         task_list.append(task_data)
 
+    # Save tasks to file
+    with open("tasks.txt", "w") as file:
+        file.write("CAMPUS COMPANION - TASKS\n")
+        file.write("----------------------------------\n")
+
+        for i in range(len(task_list)):
+            file.write(
+                str(i + 1) + ". " +
+                task_list[i]["task"] +
+                " | Priority: " +
+                task_list[i]["priority"] +
+                " | Status: " +
+                task_list[i]["status"] +
+                "\n"
+            )
+
     while True:
         print("\n--- YOUR TASKS ---")
 
@@ -247,6 +263,22 @@ def tasks():
                 task_list[task_number - 1]["status"] = "Completed"
 
                 print("\nTask marked as completed!")
+
+                # Update saved file
+                with open("tasks.txt", "w") as file:
+                    file.write("CAMPUS COMPANION - TASKS\n")
+                    file.write("----------------------------------\n")
+
+                    for i in range(len(task_list)):
+                        file.write(
+                            str(i + 1) + ". " +
+                            task_list[i]["task"] +
+                            " | Priority: " +
+                            task_list[i]["priority"] +
+                            " | Status: " +
+                            task_list[i]["status"] +
+                            "\n"
+                        )
 
             else:
                 print("\nInvalid task number.")
